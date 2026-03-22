@@ -133,7 +133,7 @@ export function useAutomation(userId: string, tasks: Task[]) {
 
     if (!logs || logs.length === 0) return
 
-    const dates = [...new Set(logs.map(l => l.logged_date))].sort().reverse()
+   const dates = Array.from(new Set(logs.map(l => l.logged_date))).sort().reverse()
     const today = new Date().toISOString().split('T')[0]
 
     let current = 0
