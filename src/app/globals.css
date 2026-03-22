@@ -67,31 +67,17 @@
   --nav-hover-bg:      rgba(0,0,0,0.04);
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  height: 100%;
-}
-
+/* Base */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
 body {
-  height: 100%;
   background-color: var(--bg-page);
   color: var(--text-primary);
   font-family: 'DM Sans', 'Segoe UI', sans-serif;
   transition: background-color 0.3s ease, color 0.2s ease;
 }
-
-/* Theme transition */
 *, *::before, *::after {
-  transition:
-    background-color 0.25s ease,
-    border-color 0.2s ease,
-    color 0.15s ease,
-    box-shadow 0.2s ease;
+  transition: background-color 0.25s ease, border-color 0.2s ease, color 0.15s ease;
 }
 
 /* Scrollbar */
@@ -100,25 +86,107 @@ body {
 ::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 3px; }
 
 /* Inputs */
-input::placeholder,
-textarea::placeholder { color: var(--text-muted); }
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(0.5);
-  cursor: pointer;
-}
-
-[data-theme="light"] input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(0.3);
-}
-
-select option {
-  background: var(--bg-page-2);
-  color: var(--text-primary);
-}
-
-/* Autofill */
+input::placeholder, textarea::placeholder { color: var(--text-muted); }
+input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.5); cursor: pointer; }
+[data-theme="light"] input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.3); }
+select option { background: var(--bg-page-2); color: var(--text-primary); }
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 100px var(--bg-input) inset !important;
   -webkit-text-fill-color: var(--text-primary) !important;
+}
+
+/* ── Mobile Responsive ── */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--bg-sidebar);
+  border-top: 1px solid var(--border);
+  padding: 8px 0 env(safe-area-inset-bottom, 12px);
+  z-index: 100;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 4px 14px;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 500;
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  transition: color 0.15s;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.mobile-nav-item.active { color: var(--accent-text); }
+
+@media (max-width: 768px) {
+  /* Show mobile nav */
+  .mobile-nav { display: flex; }
+
+  /* Hide sidebar */
+  aside { display: none !important; }
+
+  /* Main padding adjustments */
+  main { padding-bottom: 72px !important; }
+
+  /* Page padding reduce */
+  .page-wrap { padding: 16px !important; }
+
+  /* Stat cards — 2 columns on mobile */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  /* Stack 2-col layouts */
+  .two-col-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Charts stack */
+  .charts-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Header reduce */
+  header { padding: 0 14px !important; }
+  header h2 { font-size: 13px !important; }
+
+  /* Table — allow horizontal scroll */
+  .table-scroll { overflow-x: auto !important; }
+
+  /* Modal full screen on mobile */
+  .modal-inner {
+    max-width: 100% !important;
+    margin: 0 !important;
+    border-radius: 16px 16px 0 0 !important;
+    max-height: 92vh !important;
+  }
+
+  /* Suggestions grid */
+  .suggestions-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Progress + actions stack */
+  .progress-actions { grid-template-columns: 1fr !important; }
+
+  /* Card grid — single col */
+  .card-grid { grid-template-columns: 1fr !important; }
+
+  /* Pie chart */
+  .pie-wrap { flex-direction: column !important; align-items: flex-start !important; }
+}
+
+@media (max-width: 400px) {
+  .stats-grid { gap: 8px !important; }
+  .page-wrap  { padding: 12px !important; }
 }
