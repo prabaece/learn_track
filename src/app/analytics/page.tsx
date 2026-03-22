@@ -160,7 +160,6 @@ export default function AnalyticsPage() {
 
     {/* Mobile: stack vertically, Desktop: side by side */}
     <div className="pie-wrap" style={{ display:'flex', alignItems:'center', gap:24 }}>
-
       {/* Pie chart — full width on mobile */}
     <div style={{ flexShrink:0, width:'100%', maxWidth:220, margin:'0 auto' }}>
   <ResponsiveContainer width="100%" height={220}>
