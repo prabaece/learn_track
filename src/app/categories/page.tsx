@@ -5,6 +5,8 @@ import { useAuth } from "@/src/hooks/useAuth";
 import { useCategories } from "@/src/hooks/useCategories";
 import { supabase } from "@/lib/supabase";
 import { useConfirm } from "@/components/ConfirmDialog";
+import { EmptyState } from "@/components/EmptyState";
+import { PageLoader } from "@/components/EmptyState";
 const F = "'DM Sans','Segoe UI',sans-serif";
 
 const PRESET_COLORS = [
@@ -933,108 +935,108 @@ function CategoryModal({
 }
 
 // ── Shared Empty State ─────────────────────────────────
-export function EmptyState({
-  message,
-  action,
-}: {
-  message: string;
-  action?: { label: string; onClick: () => void };
-}) {
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "48px 24px",
-        textAlign: "center",
-        fontFamily: F,
-      }}
-    >
-      <svg
-        width="64"
-        height="64"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="var(--border-hover)"
-        strokeWidth="1"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        style={{ marginBottom: 16 }}
-      >
-        <rect x="2" y="3" width="20" height="14" rx="2" />
-        <line x1="8" y1="21" x2="16" y2="21" />
-        <line x1="12" y1="17" x2="12" y2="21" />
-      </svg>
-      <p
-        style={{
-          color: "var(--text-secondary)",
-          fontSize: 14,
-          fontWeight: 500,
-          margin: "0 0 6px",
-        }}
-      >
-        Nothing here yet
-      </p>
-      <p
-        style={{ color: "var(--text-muted)", fontSize: 13, margin: "0 0 16px" }}
-      >
-        {message}
-      </p>
-      {action && (
-        <button
-          onClick={action.onClick}
-          style={{
-            padding: "8px 18px",
-            borderRadius: 10,
-            border: "1px solid var(--accent-border)",
-            background: "var(--accent-bg)",
-            color: "var(--accent-text)",
-            fontSize: 13,
-            fontWeight: 600,
-            cursor: "pointer",
-            fontFamily: F,
-          }}
-        >
-          {action.label}
-        </button>
+// export function EmptyState({
+//   message,
+//   action,
+// }: {
+//   message: string;
+//   action?: { label: string; onClick: () => void };
+// }) {
+//   return (
+//     <div
+//       style={{
+//         display: "flex",
+//         flexDirection: "column",
+//         alignItems: "center",
+//         justifyContent: "center",
+//         padding: "48px 24px",
+//         textAlign: "center",
+//         fontFamily: F,
+//       }}
+//     >
+//       <svg
+//         width="64"
+//         height="64"
+//         viewBox="0 0 24 24"
+//         fill="none"
+//         stroke="var(--border-hover)"
+//         strokeWidth="1"
+//         strokeLinecap="round"
+//         strokeLinejoin="round"
+//         style={{ marginBottom: 16 }}
+//       >
+//         <rect x="2" y="3" width="20" height="14" rx="2" />
+//         <line x1="8" y1="21" x2="16" y2="21" />
+//         <line x1="12" y1="17" x2="12" y2="21" />
+//       </svg>
+//       <p
+//         style={{
+//           color: "var(--text-secondary)",
+//           fontSize: 14,
+//           fontWeight: 500,
+//           margin: "0 0 6px",
+//         }}
+//       >
+//         Nothing here yet
+//       </p>
+//       <p
+//         style={{ color: "var(--text-muted)", fontSize: 13, margin: "0 0 16px" }}
+//       >
+//         {message}
+//       </p>
+//       {action && (
+//         <button
+//           onClick={action.onClick}
+//           style={{
+//             padding: "8px 18px",
+//             borderRadius: 10,
+//             border: "1px solid var(--accent-border)",
+//             background: "var(--accent-bg)",
+//             color: "var(--accent-text)",
+//             fontSize: 13,
+//             fontWeight: 600,
+//             cursor: "pointer",
+//             fontFamily: F,
+//           }}
+//         >
+//           {action.label}
+//         </button>
         
-      )}
+//       )}
       
-    </div>
-  );
-}
+//     </div>
+//   );
+// }
 
 // ── Page Loader ────────────────────────────────────────
-export function PageLoader({ text = "Loading..." }: { text?: string }) {
-  return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: "100%",
-        background: "var(--bg-page)",
-        fontFamily: F,
-      }}
-    >
-      <div style={{ textAlign: "center" }}>
-        <div
-          style={{
-            width: 34,
-            height: 34,
-            border: "3px solid var(--accent-bg)",
-            borderTopColor: "var(--accent)",
-            borderRadius: "50%",
-            animation: "spin .8s linear infinite",
-            margin: "0 auto 10px",
-          }}
-        />
-        <p style={{ color: "var(--text-muted)", fontSize: 13 }}>{text}</p>
-      </div>
-      <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
-    </div>
-  );
-}
+// export function PageLoader({ text = "Loading..." }: { text?: string }) {
+//   return (
+//     <div
+//       style={{
+//         display: "flex",
+//         alignItems: "center",
+//         justifyContent: "center",
+//         minHeight: "100%",
+//         background: "var(--bg-page)",
+//         fontFamily: F,
+//       }}
+//     >
+//       <div style={{ textAlign: "center" }}>
+//         <div
+//           style={{
+//             width: 34,
+//             height: 34,
+//             border: "3px solid var(--accent-bg)",
+//             borderTopColor: "var(--accent)",
+//             borderRadius: "50%",
+//             animation: "spin .8s linear infinite",
+//             margin: "0 auto 10px",
+//           }}
+//         />
+//         <p style={{ color: "var(--text-muted)", fontSize: 13 }}>{text}</p>
+//       </div>
+//       <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
+//     </div>
+//   );
+// }
 
