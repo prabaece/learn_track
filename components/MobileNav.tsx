@@ -1,14 +1,12 @@
 'use client'
 
-// src/components/MobileNav.tsx
-// Bottom navigation for mobile screens
-
-import Link      from 'next/link'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const navItems = [
   {
-    href: '/dashboard', label: 'Home',
+    href: '/dashboard',
+    label: 'Home',
     icon: (active: boolean) => (
       <svg width="22" height="22" viewBox="0 0 24 24" fill={active ? 'var(--accent)' : 'none'} stroke={active ? 'var(--accent)' : 'var(--text-muted)'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
@@ -17,15 +15,27 @@ const navItems = [
     ),
   },
   {
-    href: '/tasks', label: 'Tasks',
+    href: '/tasks',
+    label: 'Tasks',
     icon: (active: boolean) => (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={active ? 'var(--accent)' : 'var(--text-muted)'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+        <path d="M9 11l3 3L22 4"/>
+        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
       </svg>
     ),
   },
   {
-    href: '/analytics', label: 'Stats',
+    href: '/categories',
+    label: 'Categories',
+    icon: (active: boolean) => (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={active ? 'var(--accent)' : 'var(--text-muted)'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+      </svg>
+    ),
+  },
+  {
+    href: '/analytics',
+    label: 'Stats',
     icon: (active: boolean) => (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={active ? 'var(--accent)' : 'var(--text-muted)'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <line x1="18" y1="20" x2="18" y2="10"/>
@@ -35,7 +45,8 @@ const navItems = [
     ),
   },
   {
-    href: '/settings', label: 'Settings',
+    href: '/settings',
+    label: 'Settings',
     icon: (active: boolean) => (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={active ? 'var(--accent)' : 'var(--text-muted)'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="3"/>
