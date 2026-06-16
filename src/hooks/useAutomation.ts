@@ -16,7 +16,6 @@ export interface Suggestion {
   category: string
   priority: 'high' | 'medium'
 }
-
 export interface StreakData {
   current: number
   longest: number
